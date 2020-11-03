@@ -27,11 +27,11 @@ mixin _$GameDataStore on _GameData, Store {
   final _$_GameDataActionController = ActionController(name: '_GameData');
 
   @override
-  void onOpen(int id) {
+  void onOpen(dynamic id, dynamic context) {
     final _$actionInfo =
         _$_GameDataActionController.startAction(name: '_GameData.onOpen');
     try {
-      return super.onOpen(id);
+      return super.onOpen(id, context);
     } finally {
       _$_GameDataActionController.endAction(_$actionInfo);
     }

@@ -19,13 +19,22 @@ class ImageNumber extends StatelessWidget {
           fit: BoxFit.fill,
         );
       } else if (Provider.of<GameDataStore>(context).opened.contains(id)) {
-        return Text("$number");
+        return Center(
+          child: Text(
+            "${number + 1}",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 40,
+            ),
+          ),
+        );
       } else {
         return FlatButton(
           onPressed: () {
-            Provider.of<GameDataStore>(context, listen: false).onOpen(id);
+            Provider.of<GameDataStore>(context, listen: false)
+                .onOpen(id, context);
           },
-          child: Text("Press me"),
+          child: Text(''),
         );
       }
     });

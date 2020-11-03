@@ -16,13 +16,16 @@ class PictureRow extends StatelessWidget {
             .pictureParts
             .getRange(rowId * nRows, (rowId + 1) * nRows)
             .map(
-              (e) => Padding(
-                padding: const EdgeInsets.all(1.0),
-                child: Container(
-                  width: (MediaQuery.of(context).size.width / 2) / nRows,
-                  height: (MediaQuery.of(context).size.height) / nRows - 10,
-                  child: e,
+              (e) => Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    width: 3,
+                    color: Colors.grey[700],
+                  ),
                 ),
+                width: (MediaQuery.of(context).size.width / 2) / nRows,
+                height: (MediaQuery.of(context).size.height) / nRows - 10,
+                child: e,
               ),
             )
             .toList(),

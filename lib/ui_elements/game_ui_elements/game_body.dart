@@ -21,7 +21,7 @@ class _GameBodyState extends State<GameBody> {
     return Provider<GameDataStore>(
       create: (_) => GameDataStore(),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 40),
         child: Row(
           children: [
             Controls(),

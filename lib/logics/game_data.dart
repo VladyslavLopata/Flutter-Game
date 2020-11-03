@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:mini_game/logics/identifier.dart';
 import 'package:mini_game/logics/image_splitter.dart';
 import 'package:mini_game/logics/static_game_data.dart';
@@ -35,7 +36,7 @@ abstract class _GameData with Store {
   }
 
   @action
-  void onOpen(int id) {
+  void onOpen(id, context) {
     opened.add(id);
     if (opened.length >= 2) {
       if (identifier.identify(id: opened.elementAt(0)) ==
@@ -46,7 +47,9 @@ abstract class _GameData with Store {
       opened.removeAt(0);
     }
     if (turned.length == StaticGameData.difficulty) {
+      StaticGameData.timeSpent = getTimePassed();
       timer.cancel();
+      Navigator.pushReplacementNamed(context, '/victory');
     }
   }
 
