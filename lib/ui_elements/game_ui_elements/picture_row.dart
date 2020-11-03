@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mini_game/logics/game_data.dart';
+import 'package:mini_game/logics/static_game_data.dart';
 import 'package:provider/provider.dart';
 
 class PictureRow extends StatelessWidget {
@@ -7,7 +8,7 @@ class PictureRow extends StatelessWidget {
   final int rowId;
   @override
   Widget build(BuildContext context) {
-    final nRows = Provider.of<GameDataStore>(context).difficulty;
+    final nRows = StaticGameData.rootDifficulty;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(

@@ -27,6 +27,17 @@ mixin _$GameDataStore on _GameData, Store {
   final _$_GameDataActionController = ActionController(name: '_GameData');
 
   @override
+  void onOpen(int id) {
+    final _$actionInfo =
+        _$_GameDataActionController.startAction(name: '_GameData.onOpen');
+    try {
+      return super.onOpen(id);
+    } finally {
+      _$_GameDataActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void callback(Timer timer) {
     final _$actionInfo =
         _$_GameDataActionController.startAction(name: '_GameData.callback');

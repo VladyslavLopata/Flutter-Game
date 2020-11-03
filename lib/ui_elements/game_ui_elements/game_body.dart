@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mini_game/logics/game_data.dart';
-import 'package:mini_game/logics/image_splitter.dart';
+
 import 'package:mini_game/ui_elements/game_ui_elements/game_board.dart';
 import 'package:provider/provider.dart';
 
@@ -18,22 +18,16 @@ class _GameBodyState extends State<GameBody> {
 
   @override
   Widget build(BuildContext context) {
-    Map arguments = ModalRoute.of(context).settings.arguments;
-    picture = picture ?? arguments['picture'];
-    difficulty = difficulty ?? arguments['difficulty'];
     return Provider<GameDataStore>(
-      create: (_) => GameDataStore(
-        ImageSplitter.splitImage(
-          inputImage: picture,
-          difficulty: difficulty,
+      create: (_) => GameDataStore(),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Row(
+          children: [
+            Controls(),
+            GameBoard(),
+          ],
         ),
-        difficulty,
-      ),
-      child: Row(
-        children: [
-          Controls(),
-          GameBoard(),
-        ],
       ),
     );
   }

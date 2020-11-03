@@ -10,7 +10,7 @@ abstract class _GameDifficulties with Store {
 
   _GameDifficulties() {
     difficulties =
-        [16, 36, 64, 100, 125].map((e) => GameDifficulty(e)).toList();
+        [16, 36, 64, 100, 196, 256].map((e) => GameDifficulty(e)).toList();
     selectedDifficulty = difficulties.elementAt(0);
   }
 

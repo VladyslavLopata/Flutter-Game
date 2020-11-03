@@ -1,14 +1,13 @@
-import 'dart:math';
-
-import 'package:flutter/material.dart';
 import 'package:image/image.dart' as imglib;
+import 'package:mini_game/logics/identifier.dart';
+import 'package:mini_game/logics/static_game_data.dart';
+import 'package:mini_game/ui_elements/game_ui_elements/image_number.dart';
 
 class ImageSplitter {
-  static List<Image> splitImage({
-    List<int> inputImage,
-    double difficulty,
-  }) {
-    difficulty = sqrt(difficulty);
+  static List<int> inputImage;
+
+  static List<ImageNumber> splitImage(Identifier identifier) {
+    final difficulty = StaticGameData.rootDifficulty;
     imglib.Image image = imglib.decodeImage(inputImage);
 
     final int xLength = (image.width / difficulty).round();
@@ -23,11 +22,12 @@ class ImageSplitter {
       }
 
     //Convert image from image package to Image Widget to display
-    List<Image> outputImageList = List<Image>();
-    for (imglib.Image img in pieceList) {
-      outputImageList.add(Image.memory(
-        imglib.encodeJpg(img),
-        fit: BoxFit.fill,
+    List<ImageNumber> outputImageList = List<ImageNumber>();
+    for (int i = 0; i < pieceList.length; i++) {
+      outputImageList.add(ImageNumber(
+        i,
+        identifier.identify(id: i),
+        imglib.encodeJpg(pieceList.elementAt(i)),
       ));
     }
 
