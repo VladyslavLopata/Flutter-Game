@@ -9,11 +9,21 @@ class PictureRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final nRows = Provider.of<GameDataStore>(context).difficulty;
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 1),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
         children: Provider.of<GameDataStore>(context)
             .pictureParts
             .getRange(rowId * nRows, (rowId + 1) * nRows)
+            .map(
+              (e) => Padding(
+                padding: const EdgeInsets.all(1.0),
+                child: Container(
+                  width: (MediaQuery.of(context).size.width / 2) / nRows,
+                  height: (MediaQuery.of(context).size.height) / nRows - 10,
+                  child: e,
+                ),
+              ),
+            )
             .toList(),
       ),
     );

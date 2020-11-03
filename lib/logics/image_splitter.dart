@@ -25,7 +25,10 @@ class ImageSplitter {
     //Convert image from image package to Image Widget to display
     List<Image> outputImageList = List<Image>();
     for (imglib.Image img in pieceList) {
-      outputImageList.add(Image.memory(imglib.encodeJpg(img)));
+      outputImageList.add(Image.memory(
+        imglib.encodeJpg(img),
+        fit: BoxFit.fill,
+      ));
     }
 
     return outputImageList;
